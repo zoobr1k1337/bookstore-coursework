@@ -1,0 +1,10 @@
+frontend/node_modules
+frontend/build
+frontend/.env
+
+backend/bookstore.db
+backend/bookstore.exe
+backend/main.exe
+backend/tmp
+
+.DS_Store

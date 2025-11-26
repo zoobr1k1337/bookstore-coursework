@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, User, LogOut, Settings, Menu, Search, ChevronRight } from 'lucide-react';
 import api from './api/axiosConfig';
+import { Toaster } from 'react-hot-toast';
 
 import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
@@ -134,6 +135,18 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Toaster 
+            position="bottom-center" 
+            containerStyle={{ zIndex: 99999 }}
+            toastOptions={{
+                duration: 3000,
+                style: {
+                    background: '#333',
+                    color: '#fff',
+                    borderRadius: '15px',
+                },
+            }}
+        />
         <Navigation />
         <div style={{ minHeight: '90vh', backgroundColor: '#fff' }}>
             <Routes>

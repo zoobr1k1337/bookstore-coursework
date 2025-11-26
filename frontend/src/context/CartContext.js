@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 export const CartContext = createContext();
 
@@ -22,7 +23,7 @@ export const CartProvider = ({ children }) => {
       }
       return [...prevItems, { ...book, quantity: 1 }];
     });
-    alert(`${book.title} додано в кошик!`);
+    toast.success(`${book.title} додано в кошик!`);
   };
 
   const removeFromCart = (bookId) => {

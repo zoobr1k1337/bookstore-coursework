@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { CartContext } from '../context/CartContext';
 import toast from 'react-hot-toast';
 import { CreditCard, MapPin, User, Phone, ShoppingBag, Truck, CheckCircle } from 'lucide-react';
+import api from '../api/axiosConfig';
 
 const CheckoutPage = () => {
   const { cartItems, getCartTotal, clearCart } = useContext(CartContext);
@@ -62,12 +62,7 @@ const CheckoutPage = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:8080/api/orders', orderPayload, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
+      const response = await api.post('/orders', orderPayload);
 
       if (response.status === 200 || response.status === 201) {
         clearCart();
